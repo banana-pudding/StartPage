@@ -2,6 +2,24 @@
 <html>
   <head>
     <title>New Tab</title>
+    <script>
+      
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+      }
+      
+      function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+      }
+    </script>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
 
@@ -20,9 +38,10 @@
     </style>
   </head>
 
-  <body>
-    <h1>Updated!!</h1>
-    <p>My first paragraph.</p>
+  <body onload="startTime()">
+    <div>
+      <div id="txt"></div>
+    </div>
   </body>
   
 </html>
